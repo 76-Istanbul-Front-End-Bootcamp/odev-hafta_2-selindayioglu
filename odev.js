@@ -10,7 +10,7 @@ var person = {
   }
 }
 
-var messageFunc = person.message
+var messageFunc = person.message.bind(person);
 messageFunc();
 
 
@@ -28,7 +28,7 @@ var numbers = {
     this.numbers[0].map(function(number, numberIndex){
         const result = number * this.numbers[1];
         console.log(result)
-    })
+    }.bind(this))
   }
 };
 
@@ -43,9 +43,14 @@ numbers.multiply();
   Ornek : isValidName(" J ohn") false donmeli
 */
 function isValidName(name){
-
+if(typeof name!=='string')
+{
+  let trimName=name.trim();
+  let spaceName=trimName.split(" ");
+  console.log(spaceName)
 }
-
+}
+isValidName();
 /*
   Odev 4:
   Asagidaki katilimSaati fonksionu 2 arguman almaktadir.
@@ -58,8 +63,18 @@ function isValidName(name){
   Ornek: katilimSaati("3", 20) 60 sonucunu vermelidir.
   Ornek: katilimSaati("5", "30") 150 sonucunu vermelidir.
 */
+
 function katilimSaati(dersSayisi, dersSuresi){
+  if(dersSayisi && dersSuresi)
+{
+  result=dersSayisi*dersSuresi;
 
 }
+else
+{
+result="İki tane parametre giriniz";
+}
+  console.log(result);
+}
 
-
+katilimSaati(1,5);
